@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/base/base",
+    "pages/cloud/cloud"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#f00",
+    "list": [{
+      "pagePath": "pages/base/base",
+      "text": "基础",
+      "iconPath": "images/film.png",
+      "selectedIconPath": "images/film-actived.png"
+    },{
+      "pagePath": "pages/cloud/cloud",
+      "text": "云开发",
+      "iconPath": "images/profile.png",
+      "selectedIconPath": "images/profile-actived.png"
+    }]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
