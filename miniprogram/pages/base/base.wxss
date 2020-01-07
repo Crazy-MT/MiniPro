@@ -1,1 +1,13 @@
-/* miniprogram/pages/base/base.wxss */
+@import '../../style/common.wxss'
+
+.box {
+  width: 200rpx;
+  height: 200rpx;
+  background: #ccc;
+}
+
+.child{
+  width: 100rpx;
+  height: 100rpx;
+  background: #bbb;
+}

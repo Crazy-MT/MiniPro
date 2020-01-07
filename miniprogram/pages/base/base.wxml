@@ -1,5 +1,5 @@
 <view>{{msg}}</view>
-<image src="{{img}}"></image>
+<image class="banner" src="{{img}}"></image>
 <view wx:for="{{arr}}" wx:key="{{index}}">
 {{index}} {{item}}
 </view>
@@ -12,3 +12,17 @@
 jerry
 </view>
 <view wx:else>请登录</view>
+
+<view hidden="{{isLogin}}">
+hidden
+</view>
+
+<view class="box"
+catchtap="onTapBox"
+data-id="1234">
+  <view class='child'
+  catchtap="onTapChild"></view>
+</view>
+
+<button size='mini' bindtap="onTapHandler">点我加一</button>
+<view>{{count}}</view>

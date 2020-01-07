@@ -20,7 +20,26 @@ Page({
         age: 20
       }
     ],
-    isLogin: false
+    isLogin: false,
+    count: 0
+  },
+
+  onTapHandler: function() { 
+    this.setData(
+      {
+        count : this.data.count + 1
+      }
+    );
+  },
+
+  onTapChild:function() {
+    console.log('child');
+  },
+
+  onTapBox: function(event) {
+    console.log('box');
+    console.log(event);
+    console.log(event.target.dataset.id);
   },
 
   /**
