@@ -9,3 +9,11 @@
 <button bindtap="sum">调用云函数sum</button>
 <button bindtap="getOpenId">获取当前用户openid</button>
 <button bindtap="batchDelete">批量删除</button>
+
+<view>云存储</view>
+<button bindtap="upload">上传图片</button>
+<button bindtap="getFile">文件展示</button>
+<block wx:for="{{images}}">
+<image src="{{item.fileId}}"></image>
+<button data-fileid="{{item.fileId}}" bindtap="downloadFile">文件下载</button>
+</block>

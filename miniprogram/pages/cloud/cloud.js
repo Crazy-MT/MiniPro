@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    images: []
   },
 
   insert: function() {
@@ -81,6 +81,67 @@ Page({
     });
   },
 
+  upload: function() {
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        const tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths);
+        wx.cloud.uploadFile({
+          cloudPath: 'example.png',
+          filePath: tempFilePaths[0],
+          success: res => {
+            console.log(res.fileID)
+            db.collection('image').add({
+              data: {
+                fileId: res.fileID
+              }
+            }).then(res => {
+              console.log(res);
+            }).catch(err => {
+              console.error(err);
+            });
+          },
+          fail: console.error
+        })
+      },
+    })
+  },
+
+  getFile: function() {
+    wx.cloud.callFunction({
+      name: 'login',
+    }).then(res => {
+      db.collection('image').where({
+        _openid: res.result.openid
+      }).get().then(res2 => {
+        console.log(res2);
+        this.setData({
+          images: res2.data
+        })
+      })
+    })
+  },
+
+  downloadFile: function(event) {
+    wx.cloud.downloadFile({
+      fileID: event.target.dataset.fileid,
+      success: res => {
+        wx.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success(res) {
+            wx.showToast({
+              title: '保存成功',
+            })
+          }
+        })
+      },
+      fail: console.error
+    })
+  },
+
   delete: function () {
     db.collection('user')
       .doc('8d1e75855e15a84e00430b7800079c8b')
@@ -93,7 +154,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
