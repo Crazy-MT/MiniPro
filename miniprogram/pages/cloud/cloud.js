@@ -1,4 +1,7 @@
 // miniprogram/pages/cloud/cloud.js
+
+const db = wx.cloud.database();
+
 Page({
 
   /**
@@ -6,6 +9,53 @@ Page({
    */
   data: {
 
+  },
+
+  insert: function() {
+    // db.collection('user').add({
+    //   data: {
+    //     name: 'jerry',
+    //   },
+    //   success: res => {
+    //     console.log(res);
+    //   },
+    //   fail: err => {
+    //     console.log(err);
+    //   }
+    // })
+    db.collection('user').add({
+      data: {
+        name: 'tom',
+      }
+    })
+    .then(res => { console.log(res); })
+    .catch(err => { console.log(err);})
+  },
+
+  update: function() {
+    db.collection('user').doc('8d1e75855e15a84e00430b7800079c8b').update({
+      data: {
+        name:'hh'
+      }
+    })
+      .then(res => { console.log(res); })
+      .catch(err => { console.log(err); })
+  },
+
+  search: function () {
+    db.collection('user').where({
+      name: 'hh'
+    }).get()
+      .then(res => { console.log(res); })
+      .catch(err => { console.log(err); })
+  },
+
+  delete: function () {
+    db.collection('user')
+      .doc('8d1e75855e15a84e00430b7800079c8b')
+      .remove()
+      .then(res => { console.log(res); })
+      .catch(err => { console.log(err); })
   },
 
   /**
