@@ -50,6 +50,37 @@ Page({
       .catch(err => { console.log(err); })
   },
 
+  sum: function() {
+    wx.cloud.callFunction({
+      name: 'sum',
+      data: {
+        a: 2,
+        b: 3
+      }
+    }).then(res => { console.log(res) })
+      .catch(err => { console.log(err) });
+  },
+
+  getOpenId: function() {
+    wx.cloud.callFunction({
+      name: 'login'
+    }).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    });
+  },
+
+  batchDelete: function() {
+    wx.cloud.callFunction({
+      name: 'batchDelete'
+    }).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.error(err);
+    });
+  },
+
   delete: function () {
     db.collection('user')
       .doc('8d1e75855e15a84e00430b7800079c8b')

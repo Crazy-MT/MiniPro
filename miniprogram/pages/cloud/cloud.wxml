@@ -4,3 +4,8 @@
 <button bindtap="update">更新</button>
 <button bindtap="search">查找</button>
 <button bindtap="delete">删除</button>
+
+<view>云函数</view>
+<button bindtap="sum">调用云函数sum</button>
+<button bindtap="getOpenId">获取当前用户openid</button>
+<button bindtap="batchDelete">批量删除</button>
